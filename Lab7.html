@@ -3,16 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Бесполитов Д.А.</title>
+    <script>
+        function array()
+            {
+                subject = new Array("Физика","Химия","Алгебра","Геометрия","История","Литература",
+                    "Русский язык","Английский язык","Обществознание");
+                Humanities = new Array();
+                Exact_sciences = new Array();
+                Exact_sciences=year.slice(0,3);
+                Humanities=year.slice(4,8);
+                document.write("Точные науки: "+ Exact_sciences +"<br>");
+                document.write("Гуманитарные науки: "+ Humanities +"<br>");
+            }
+    </script>
 </head>
 <body>
 <p>ЛР1</p>
 <p>Задание 7</p>
 <script>
-    year = new Array("декабрь","январь","февраль","март","апрель","май",
-        "июнь","июль","август","сентябрь","октябрь","ноябрь");
-    summer = new Array(); //летние месяцы
-    summer=year.slice(6,9);
-    document.write(summer+"<br>");
+
 </script>
 
 
