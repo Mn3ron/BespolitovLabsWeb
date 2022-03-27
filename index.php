@@ -23,7 +23,7 @@
     <li>Лаба 1</li>
     <ol >
         <li> <a href= "Lab1.html" >Задание 1</a> </li>
-        
+        <li> <a href= "Lab2.html" >Задание 2</a> </li>
     </ol>
     <li>Лаба 2</li>
     <ol>
