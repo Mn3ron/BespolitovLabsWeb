@@ -5,9 +5,10 @@
     <title>Бесполитов Д.А.</title>
 </head>
 <body>
-<p>ЛР1</p>
+
 <script language="JavaScript" type="text/JavaScript">
-    var x, y;
+    var x, y,pass;
+    var password = "123456";
     x=parseInt(prompt("Введите значение х",'')); // метод parseInt() переводит строку в целое
     y=parseInt(prompt("Введите значение у",'')); // число
     if(x<y)
@@ -22,6 +23,17 @@
         {
             alert(" Максимальное число - x");
         }
+
+    pass=parseInt(prompt("Введите пароль",''));
+    if(pass==password)
+    {
+        alert("Пароль верный");
+    }
+    else
+    {
+        alert("Пароль неверный");
+    }
+
 </script>
 <p>Задание 4</p>
 
