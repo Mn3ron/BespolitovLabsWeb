@@ -6,12 +6,12 @@
     <script>
         function array()
             {
-                subject = new Array("Физика","Химия","Алгебра","Геометрия","История","Литература",
-                    "Русский язык","Английский язык","Обществознание");
+                subject = new Array("Физика","Химия","Алгебра","Геометрия","История","Литература","Русский язык","Английский язык","Обществознание");
                 Humanities = new Array();
                 Exact_sciences = new Array();
-                Exact_sciences=year.slice(0,3);
-                Humanities=year.slice(4,8);
+                Exact_sciences=subject.slice(0,3);
+                Humanities=subject.slice(4,8);
+                
                 document.write("Точные науки: "+ Exact_sciences +"<br>");
                 document.write("Гуманитарные науки: "+ Humanities +"<br>");
             }
