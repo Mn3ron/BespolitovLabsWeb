@@ -1,1 +1,1 @@
-[Heroku](https://labs-bespolitov.herokuapp.com/
+[Heroku](https://labs-bespolitov.herokuapp.com/)
