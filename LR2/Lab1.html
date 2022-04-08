@@ -3,12 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Бесполитов Д.А.</title>
+    <script  src = "../jquery.js"></script>
 </head>
-<body>
+<body >
 <p>ЛР2</p>
 <p>Задание 1</p>
-<script>
+<button class="btn-color">Изменить цвет</button>
 
+<script>
+    $(document).ready(function () {
+        function randomColor() {
+            return '#' + Math.floor(Math.random() * 16777215).toString(16)
+        }
+        $(".btn-color").click(function () {
+            $("body").css("background",randomColor());
+
+        });
+    });
 </script>
 
 
