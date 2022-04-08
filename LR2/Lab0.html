@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Бесполитов Д.А.</title>
+    <script  src = "../jquery.js"></script>
+    <script  src = "../jquery.js"></script>
+</head>
+<body>
+<p>ЛР2</p>
+<p>Пример</p>
+<div class = "wrapper">
+    <div id = "panel">
+        Выдвижная панель
+    </div>
+    <button class="btn-slide">Нажми!</button>
+</div>
+<div class = "pane">
+    <span class = "delete">X</span>
+    <p>
+        jQuery- библиотека JavaScript, фокусирующаяся на взаимодействии
+        JavaScript и HTML. Библиотека jQuery помогает легко получить доступ
+        к любому элементу DOM, обращаться к атрибутам и содержимому элементов
+        DOM, манипулировать ими. Также библиотека jQuery представляет
+        удобный API при работе с AJAX.
+    </p>
+</div>
+<script type = "text/javascript">
+    $(document).ready(function () {
+        $(".btn-slide").click(function () {
+            $("#panel").slideToggle("slow");
+            $(this).toggleClass("active");
+        });
+    });
+
+    $(".pane .delete").click(function () {
+       $(this).parents(".pane").animate({opacity: "hide"}, "slow");
+    });
+</script>
+
+
+<p><a href= "../index.php">Назад</a></p>
+</body>
+</html>
