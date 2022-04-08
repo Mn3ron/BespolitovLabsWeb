@@ -3,12 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Бесполитов Д.А.</title>
+    <script  src = "../jquery.js"></script>
 </head>
 <body>
 <p>ЛР2</p>
 <p>Задание 5</p>
+<p id="position">Координаты курсора:</p>
 <script>
-
+    $(document).mousemove(function(event){
+        var x = event.pageX;
+        var y = event.pageY;
+        $('#position').html( 'Координаты курсора: (x:' + x + '; y: ' + y + ')' );
+    });
 </script>
 
 
