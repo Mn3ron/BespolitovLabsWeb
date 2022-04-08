@@ -22,7 +22,6 @@
 <ol>
     <li>Лаба 1</li>
     <ol >
-        <li> <a href= "LR1/Lab0.html" >Пример</a> </li>
         <li> <a href= "LR1/Lab1.html" >Задание 1</a> </li>
         <li> <a href= "LR1/Lab2.html" >Задание 2</a> </li>
         <li> <a href= "LR1/Lab3.html" >Задание 3</a> </li>
@@ -33,6 +32,7 @@
     </ol>
     <li>Лаба 2</li>
     <ol>
+        <li> <a href= "LR2/Lab0.html" >Пример</a> </li>
         <li> <a href= "LR2/Lab1.html" >Задание 1</a> </li>
         <li> <a href= "LR2/Lab2.html" >Задание 2</a> </li>
         <li> <a href= "LR2/Lab3.html" >Задание 3</a> </li>
