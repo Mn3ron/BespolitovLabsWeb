@@ -3,12 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <title>Бесполитов Д.А.</title>
+    <script  src = "../jquery.js"></script>
 </head>
 <body>
 <p>ЛР2</p>
 <p>Задание 2</p>
-<script>
+<form action="#" method="post" class="rf">
+    <ul>
+        <li>
+            <label for="name">Ваше имя:</label>
+            <input type="text" class="nameField" id="name" name="user_name">
+        </li>
+        <li>
+            <label>Пароль:</label>
+            <input type="text" class="passField" id="pass" name="user_pass">
+        </li>
+        <li>
+            <label>Подтверждение пароля:</label>
+            <input type="text" class="passField2" id="passCheck" name="user_pass2">
+        </li>
+        <li>
+            <label for="mail">Email:</label>
+            <input type="email" class="mailField" id="mail" name="user_mail">
+        </li>
+        <li>
+            <label for="msg">Сообщение:</label>
+            <textarea id="msg" class="messField" name="user_message"></textarea>
+        </li>
+    </ul>
+    <input type="submit" class="btn_submit disabled" value="Отправить" />
+</form>
 
+<button class="clear">Очистить</button>
+<script>
+    var pass;
+    (function( $ ){
+        $(function() {
+            $('.rf').each(function(){
+                var form = $(this),
+                    btn = form.find('.btn_submit');
+                form.find('.nameField').addClass('empty_field');
+                form.find('.passField').addClass('empty_field');
+                form.find('.passField2').addClass('empty_field');
+                form.find('.mailField').addClass('empty_field');
+                form.find('.messField').addClass('empty_field');
+                function checkInput(){
+                    form.find('.nameField').each(function(){
+                        if($(this).val() != ''){
+                            $(this).removeClass('empty_field');
+                        } else {
+                            $(this).addClass('empty_field');
+                        }
+                    });
+                }
+                function checkPass(){
+                    form.find('.passField').each(function(){
+                        pass = $(this).val();
+                        if($(this).val().length > '4'){
+                            $(this).removeClass('empty_field');
+                        } else {
+                            $(this).addClass('empty_field');
+                        }
+                    });
+                }
+                function checkPass2(){
+                    form.find('.passField2').each(function(){
+                        if($(this).val() == pass){
+                            $(this).removeClass('empty_field');
+                        } else {
+                            $(this).addClass('empty_field');
+                        }
+                    });
+                }
+                function checkMail(){
+                    form.find('.mailField').each(function(){
+                        if($(this).val().match(/[\@,]/g)){
+                            $(this).removeClass('empty_field');
+                        } else {
+                            $(this).addClass('empty_field');
+                        }
+                    });
+                }
+                function checkMess(){
+                    form.find('.messField').each(function(){
+                        if($(this).val().length > '10'){
+                            $(this).removeClass('empty_field');
+                        } else {
+                            $(this).addClass('empty_field');
+                        }
+                    });
+                }
+                function lightEmpty(){
+                    form.find('.empty_field').css({'border-color':'#d8512d'});
+                    setTimeout(function(){
+                        form.find('.empty_field').removeAttr('style');
+                    },500);
+                }
+                setInterval(function(){
+                    checkInput();
+                    checkPass();
+                    checkPass2();
+                    checkMail();
+                    checkMess();
+                    var sizeEmpty = form.find('.empty_field').size();
+                    if(sizeEmpty > 0){
+                        if(btn.hasClass('disabled')){
+                            return false
+                        } else {
+                            btn.addClass('disabled')
+                        }
+                    } else {
+                        btn.removeClass('disabled')
+                    }
+                },500);
+                btn.click(function(){
+                    if($(this).hasClass('disabled')){
+                        lightEmpty();
+                        return false
+                    } else {
+                        form.submit();
+                    }
+                });
+            });
+        });
+
+    })( jQuery );
+    $(".clear").click(function () {
+        $('.rf')[0].reset();
+    });
 </script>
 
 
