@@ -3,12 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Бесполитов Д.А.</title>
+    <script  src = "../jquery.js"></script>
 </head>
 <body>
 <p>ЛР2</p>
 <p>Задание 3</p>
-<script>
+<img id="cat" src="cat.jpg" style="position: relative; left: 10px;">
 
+<br>
+<button class = "up">Вверх</button>
+<button class = "down">Вниз</button>
+<button class = "right">Вправо</button>
+<button class = "left">Влево</button>
+<script>
+    $( ".right" ).click(function() {
+        $( "#cat" ).animate({left: "+=100" }, "slow" );
+    });
+    $( ".left" ).click(function() {
+        $( "#cat" ).animate({left: "-=100" }, "slow" );
+    });
+    $( ".up" ).click(function() {
+        $( "#cat" ).animate({top: "-=100" }, "slow" );
+    });
+    $( ".down" ).click(function() {
+        $( "#cat" ).animate({top: "+=100" }, "slow" );
+    });
 </script>
 
 
