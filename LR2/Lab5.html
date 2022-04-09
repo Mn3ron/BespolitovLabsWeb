@@ -3,11 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Бесполитов Д.А.</title>
+    <script  src = "../jquery.js"></script>
+    <script  src = "../jquery-ui.js"></script>
 </head>
 <body>
 <p>ЛР2</p>
 <p>Задание 5</p>
+<div id="draggable">
+    Перетащи меня
+</div>
+<style >
+    #draggable {font-size: x-large; border: thin solid black;
+        width: 5em; text-align: center; padding:10px}
+</style>
+
 <script>
+    var move;
+    $(document).mousedown(function(){
+        $('#draggable').draggable();
+       // $('#draggable').addClass('drag');
+        move = 1;
+    });
+    $(document).mouseup(function(){
+        $('#draggable').draggable()
+       // $('#draggable').removeClass('drag');
+        move = 0;
+    });
+    $(document).mousemove(function(event){
+        var coord = $('#draggable').offset();
+        var x = coord.left;
+        var y = coord.top;
+
+        if(move){
+            $('#draggable').html( 'Перетащи меня <br> (x:' + x + '; y: ' + y + ')');
+        }
+
+    });
 
 </script>
 
