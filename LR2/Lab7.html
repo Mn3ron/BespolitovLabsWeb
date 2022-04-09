@@ -3,12 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <title>Бесполитов Д.А.</title>
+    <script  src = "../jquery.js"></script>
 </head>
 <body>
 <p>ЛР2</p>
 <p>Задание 7</p>
-<script>
+<input type="text" class="result" id="results" name="Calcresult" readonly>
+<button class = "delete"><<</button>
+<button class = "clear">C</button> <br>
 
+<button style="height:30px;width:30px" class = "one">1</button>
+<button style="height:30px;width:30px" class = "two">2</button>
+<button style="height:30px;width:30px" class = "three">3</button>
+<button style="height:30px;width:30px" class = "plus">+</button> <br>
+
+<button style="height:30px;width:30px" class = "four">4</button>
+<button style="height:30px;width:30px" class = "five">5</button>
+<button style="height:30px;width:30px" class = "six">6</button>
+<button style="height:30px;width:30px" class = "minus">-</button> <br>
+
+<button style="height:30px;width:30px" class = "seven">7</button>
+<button style="height:30px;width:30px" class = "eight">8</button>
+<button style="height:30px;width:30px" class = "nine">9</button>
+<button style="height:30px;width:30px" class = "multiply">*</button> <br>
+
+<button style="height:30px;width:30px" class = "zero">0</button>
+<button style="height:30px;width:30px" class = "dot">.</button>
+<button style="height:30px;width:30px" class = "division">/</button>
+<button style="height:30px;width:30px" class = "equals">=</button>
+<script>
+    var firstNum,secondNum,action;
+    $( ".one" ).click(function() {
+    $(".result").val($('.result').val() +'1');
+    });
+    $( ".two" ).click(function() {
+        $(".result").val($('.result').val() +'2');
+    });
+    $( ".three" ).click(function() {
+        $(".result").val($('.result').val() +'3');
+    });
+    $( ".four" ).click(function() {
+        $(".result").val($('.result').val() +'4');
+    });
+    $( ".five" ).click(function() {
+        $(".result").val($('.result').val() +'5');
+    });
+    $( ".six" ).click(function() {
+        $(".result").val($('.result').val() +'6');
+    });
+    $( ".seven" ).click(function() {
+        $(".result").val($('.result').val() +'7');
+    });
+    $( ".eight" ).click(function() {
+        $(".result").val($('.result').val() +'8');
+    });
+    $( ".nine" ).click(function() {
+        $(".result").val($('.result').val() +'9');
+    });
+    $( ".plus" ).click(function() {
+        firstNum = $(".result").val()*1;
+        action= '+';
+        $('.result').val('');
+
+    });
+    $( ".minus" ).click(function() {
+        firstNum = $(".result").val()*1;
+        action= '-';
+        $('.result').val('');
+    });
+    $( ".multiply" ).click(function() {
+        firstNum = $(".result").val()*1;
+        action= '*';
+        $('.result').val('');
+    });
+    $( ".zero" ).click(function() {
+        $(".result").val($('.result').val() +'0');
+    });
+    $( ".dot" ).click(function() {
+        $(".result").val($('.result').val() +'.');
+    });
+    $( ".division" ).click(function() {
+        firstNum = $(".result").val()*1;
+        action= '/';
+        $('.result').val('');
+    });
+    $(".clear").click(function () {
+        $('.result').val('');
+    });
+    $(".delete").click(function () {
+        var text = $('.result').val();
+        $('.result').val(text.substring(0, text.length-1));
+    });
+    $(".equals").click(function () {
+        secondNum = $('.result').val()*1;
+        switch (action){
+            case '+':
+               var result = firstNum + secondNum;
+               break;
+            case '-':
+                var result = firstNum - secondNum;
+                break;
+            case '*':
+                var result = firstNum * secondNum;
+                break;
+            case '/':
+                var  result = firstNum / secondNum;
+                break;
+        }
+        $('.result').val(result);
+    });
 </script>
 
 
