@@ -1,1 +1,1 @@
-[Heroku](https://labs-bespolitov.herokuapp.com/)
+[Спринтхост](http://a0664956.xsph.ru/index.php)
