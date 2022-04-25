@@ -42,8 +42,9 @@
         <li> <a href= "LR2/Lab7.html" >Задание 7</a> </li>
     </ol>
     <li>Лаба 3</li>
+
     <ol>
-        
+        <li><a href= "LR3/Lab1.html" >Задание 1</a> </li>
     </ol>
     <li>Лаба 4</li>
     <ol>
