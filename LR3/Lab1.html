@@ -9,7 +9,7 @@
     .v3090 {
         display: table-cell;
         height: 170px;
-        width: 600px;
+        width: 640px;
         vertical-align: middle;
         text-align: left;
         border: 1px solid black;
@@ -19,7 +19,7 @@
     .v3080 {
         display: table-cell;
         height: 170px;
-        width: 600px;
+        width: 640px;
         vertical-align: middle;
         text-align: left;
         border: 1px solid black;
@@ -29,7 +29,7 @@
     .v3070 {
         display: table-cell;
         height: 170px;
-        width: 600px;
+        width: 640px;
         vertical-align: middle;
         text-align: left;
         border: 1px solid black;
@@ -39,7 +39,7 @@
     .v3060 {
         display: table-cell;
         height: 170px;
-        width: 600px;
+        width: 640px;
         vertical-align: middle;
         text-align: left;
         border: 1px solid black;
@@ -49,30 +49,57 @@
     .v3050 {
         display: table-cell;
         height: 170px;
-        width: 600px;
+        width: 640px;
         vertical-align: middle;
         text-align: left;
         border: 1px solid black;
         box-shadow: 7px 7px 5px rgba(0,0,0,0.6);
         background-color: white;
     }
-
+    .new {
+        display: table-cell;
+        height: 170px;
+        width: 640px;
+        vertical-align: middle;
+        text-align: left;
+        border: 1px solid black;
+        box-shadow: 7px 7px 5px rgba(0,0,0,0.6);
+        background-color: white;
+    }
 </style>
 <body  bgcolor="#ffffff">
 
 <p>ЛР2</p>
 <p>Задание 1</p>
 
-<div class ="v3090"><img style="padding-right: 48px;" align="left" id="3090" src="3090.jpg" >Блок текста. Блок текста. Блок текста. Блок текста. Блок текста. Блок текста. Блок текста.</div>
-<br><div class ="v3080"><img style="padding-right: 4px;" align="left" id="3080" src="3080.png" >Блок текста. Блок текста. Блок текста. Блок текста. Блок текста. Блок текста. Блок текста.</div>
-<br><div class ="v3070"><img  align="left" id="3070" src="3070.png" >Блок текста. Блок текста. Блок текста. Блок текста. Блок текста. Блок текста. Блок текста.</div>
-<br><div class ="v3060"><img style="padding-right: 41px;" align="left" id="3060" src="3060.jpg" >Блок текста. Блок текста. Блок текста. Блок текста. Блок текста. Блок текста. Блок текста.</div>
-<br><div class ="v3050" ><img style="padding-right: 4px;"align="left" id="3050" src="3050.png" >Блок текста. Блок текста. Блок текста. Блок текста. Блок текста. Блок текста. Блок текста.</div>
+<div class ="v3090"><img style="padding-right: 48px;" align="left" id="3090" src="3090.jpg" >GeForce RTX 3090 — невероятно мощная видеокарта с производительностью класса TITAN. В ее основе лежит Ampere — архитектура NVIDIA RTX второго поколения — с удвоенной производительностью трассировки лучей и технологий искусственного интеллекта благодаря улучшенным ядрам RT, тензорным ядрам и новым потоковым мультипроцессорам.</div>
+<br><div class ="v3080"><img style="padding-right: 4px;" align="left" id="3080" src="3080.png" >GeForce RTX 3080 обеспечиваетрекордную производительность для геймеров, работая на базе Ampere — архитектуры NVIDIA RTX второго поколения. Они оснащены улучшенными ядрами RT и тензорными ядрами, новыми потоковыми мультипроцессорами и высокоскоростной памятью G6X для потрясающих игровых возможностей.</div>
+<br><div class ="v3070"><img  align="left" id="3070" src="3070.png" >GeForce RTX 3070 создана на базе Ampere — архитектуры NVIDIA RTX 2-го поколения. Она оснащены улучшенными ядрами для трассировки лучей и тензорными ядрами, новыми потоковыми мультипроцессорами и высокоскоростной памятью и обеспечивают необходимую мощность даже для самых требовательных игр.</div>
+<br><div class ="v3060"><img style="padding-right: 41px;" align="left" id="3060" src="3060.jpg" >GeForce RTX 3060 обеспечивает оптимальную производительность в топовых играх благодаря возможностям Ampere — архитектуры NVIDIA RTX второго поколения. Оптимальная производительность и качество графики благодаря улучшенным ядрам RT и тензорным ядрам, новым потоковым мультипроцессорам и высокоскоростной памяти G6.</div>
+<br><div class ="v3050" ><img style="padding-right: 4px;"align="left" id="3050" src="3050.png" >Видеокарта GeForce RTX™ 3050 создана на базе высокопроизводительной архитектуры NVIDIA Ampere. Отличная производительность для игр и работы с графикой благодаря улучшенным ядрам RT и тензорным ядрам, новым потоковым мультипроцессорам и высокоскоростной памяти G6.</div>
 
 <br><button class="add">Показать больше</button>
 
 <script>
+    n = 5;
+    $(".add").click(function(){
 
+        $.get( "getdata_3.php",
+            {"kol": 5, "tek":n},
+            function( data ) {
+                var result = JSON.parse(data);
+                if(n==15) {$(".add").hide();}
+                add(result);
+                n+=5;
+            }
+        );
+    });
+function add(result) {
+    for (i=0;i<5;i++){
+        $(".add").before('<div class ="new" ><img style="padding-right: 4px;"align="left" id="3050" src="'+ result[i*2] +'" >'+result[i*2+1]+'</div><br>');
+    }
+
+}
 </script>
 
 
