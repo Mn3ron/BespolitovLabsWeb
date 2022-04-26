@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Бесполитов Д.А.</title>
+    <script  src = "../jquery.js"></script>
+</head>
+<style>
+    .new {
+        display: table-cell;
+        height: 80px;
+        width: 300px;
+        vertical-align: middle;
+        text-align: left;
+        border: 1px solid black;
+        box-shadow: 7px 7px 5px rgba(0,0,0,0.6);
+        background-color: white;
+        padding-left: 10px;
+    }
+</style>
+<body>
+<p>ЛР3</p>
+<p>Задание 2</p>
+
+    <ul>
+        <li>
+            <label for="name">Ваше имя:</label> <br>
+            <input type="text" class="nameField" id="name" name="user_name">
+        </li>
+        <li>
+            <label for="mail">Email:</label><br>
+            <input type="email" class="mailField" id="mail" name="user_mail">
+        </li>
+        <li>
+            <label for="msg">Сообщение:</label><br>
+            <textarea id="msg" class="messField" name="user_message"></textarea>
+        </li>
+    </ul>
+<button class="send">Отправить</button>
+
+<div class="reviews">Отзывы:</div>
+
+<script>
+    $(document).ready(function() {
+        $.get( "getdata_3b.php",
+            {},
+            function( data ) {
+                var result = JSON.parse(data);
+                add(result);
+
+            }
+        );
+    });
+    function add(result) {
+        for (i=0;i<result.length/3;i++){
+           // $(".reviews").after('<div class ="new" >Имя:'+result[i*3+2]+'id='+i+' Email:'+result[i*3+1]+'id='+i+' Отзыв:'+result[i*3]+'id='+i+'</div>');
+            $(".reviews").after('<div class ="new" >Имя:'+result[i*3+2]+'<br> Email:'+result[i*3+1]+'<br> Отзыв:'+result[i*3]+'</div><br>');
+           // $(".reviews").after('<div class ="new" >'+result[i]+' id='+i*3+'</div>');
+        }
+
+    }
+    $(".send").click(function(){
+
+        $.get( "setdata_3b.php",
+            {"name":$(".nameField").val(), "email":$(".mailField").val(),"message":$(".messField").val()},
+            function( data ) {
+                var result = JSON.parse(data);
+
+                alert(result);
+
+            }
+        );
+    });
+   ( jQuery );
+    $(".clear").click(function () {
+        $('.rf')[0].reset();
+    });
+</script>
+
+
+<p><a href= "../index.php">Назад</a></p>
+</body>
+</html>

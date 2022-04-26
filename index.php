@@ -45,14 +45,15 @@
 
     <ol>
         <li><a href= "LR3/Lab1.html" >Задание 1</a> </li>
+        <li><a href= "LR3/Lab2.html" >Задание 2</a> </li>
     </ol>
     <li>Лаба 4</li>
     <ol>
-        
+
     </ol>
 	<li>Лаба 5</li>
     <ol>
-        
+
     </ol>
 </ol>
 
