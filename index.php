@@ -49,7 +49,7 @@
     </ol>
     <li>Лаба 4</li>
     <ol>
-
+        <li><a href= "LR4/Lab1.html" >Задание 1</a> </li>
     </ol>
 	<li>Лаба 5</li>
     <ol>

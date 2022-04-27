@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Бесполитов Д.А.</title>
+    <script  src = "../jquery.js"></script>
+    <script  src = "../jquery-ui.js"></script>
+    <link rel="stylesheet"  href="../jquery-ui.css">
+</head>
+<body>
+<style >
+
+    #tabs {
+        margin: 10px 0;
+    }
+    .tabs-nav {
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    .tabs-nav li {
+        display: block;
+        float: left;
+        padding: 0;
+        list-style: none;
+    }
+    .tabs-nav a {
+        display: block;
+        padding: 10px 20px;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        border-left: 1px solid #ccc;
+        background: #fbfbfb;
+        font-size: 16px;
+        text-decoration: none;
+        text-align: center;
+        color: #999;
+    }
+    .tabs-nav li:first-child a {
+        border-radius: 5px 0 0 0;
+    }
+    .tabs-nav li:last-child a {
+        display: block;
+        border-right: 1px solid #ccc;
+        border-radius: 0 5px 0 0;
+    }
+    .tabs-nav a.active {
+        border-bottom: 1px solid #fff;
+        background: #fff;
+        color: #000;
+    }
+    .tabs-items {
+        border: 1px solid #ccc;
+        border-radius: 0 5px 5px 5px;
+        background: #fff;
+        margin: -1px 0 0 0;
+        width: 700px;
+    }
+    .tabs-item {
+        padding: 15px;
+    }
+    .order{
+        border: 1px solid #ccc;
+        border-radius: 0 5px 5px 5px;
+        background: #fff;
+        margin: -1px 0 0 0;
+        width: 700px;
+    }
+    #slider{
+
+        margin: 1%;
+        width: 500px;
+    }
+
+</style>
+<p>ЛР4</p>
+<p>Задание 1</p>
+
+<div id="tabs">
+
+    <ul class="tabs-nav">
+        <li><a href="#tab-1">Тур 1</a></li>
+        <li><a href="#tab-2">Тур 2</a></li>
+        <li><a href="#tab-3">Тур 3</a></li>
+    </ul>
+
+
+    <div class="tabs-items">
+        <div class="tabs-item" id="tab-1">
+            <strong>Текст вкладки №1</strong>
+        </div>
+        <div class="tabs-item" id="tab-2">
+            <strong>Текст вкладки №2</strong>
+        </div>
+        <div class="tabs-item" id="tab-3">
+            <strong>Текст вкладки №3</strong>
+        </div>
+    </div>
+</div>
+<div class="order">
+    <div class="order_name">Купить</div>
+    <div class="fio">ФИО: <input type="text" class="fio_input" id="name" name="user_name"></div>
+    <label for="start" >Количество дней:</label >
+    <input type="text" name="start" class="form-control" id="start" readonly>
+    <div id="slider"></div>
+    <label  for="date">Дата: </label >
+    <input type="text" name="date" class="form-control" id="date">
+    <br><label  for="city">Город вылета: </label >
+    <select id="city" name="select" >
+        <option selected value="s1">Москва</option>
+        <option value="s2">Санкт-Петербург</option>
+        <option value="s3">Уфа</option>
+    </select>
+        <br><label  for="city">Аэропорт: </label >
+        <input type="text" name="air" class="form-control" id="air">
+        <br><label  for="city">Промокод: </label >
+        <input type="text" name="promo" class="form-control" id="promo"><a onclick="event.preventDefault()"href=”#” title=SALE15 >?</a>
+</div>
+
+<script>
+    $("order a").tooltip();
+    $( function() {
+        var tags;
+        var tagsMoscow = [
+            "Внуково",
+            "Домодедово",
+            "Шереметьево",
+        ];
+        var tagsSPB = [
+            "Пулково",
+
+        ];
+        var tagsUfa = [
+            "Международный аэропорт Уфа",
+        ];
+        $("#air").autocomplete({
+            source: tagsMoscow
+        });
+        $("#city").change(function() {
+
+            switch($(this).find('option:selected').val()){
+                case "s1":tags = tagsMoscow;
+                    break;
+                case "s2":tags = tagsSPB;
+                    break;
+                case "s3":tags = tagsUfa;
+                    break;
+            };
+            $("#air").autocomplete({
+                source: tags
+            });
+        });
+
+
+    } );
+    $( function() {
+        $("#date").datepicker({
+            dateFormat: "dd.mm.yy"
+        });
+    } );
+    $(function() {
+        $('#slider').slider({
+            min: 3,
+            max: 30,
+            step: 1,
+            slide: function (event, ui) {
+               $('#start').val(ui['value']);
+            }
+        });
+        $('#start').val($('#slider').slider('values',0));
+    });
+    $(function() {
+        var tab = $('#tabs .tabs-items > div');
+        tab.hide().filter(':first').show();
+
+        // Клики по вкладкам.
+        $('#tabs .tabs-nav a').click(function(){
+            tab.hide();
+            tab.filter(this.hash).show();
+
+            $('#tabs .tabs-nav a').removeClass('active');
+            $(this).addClass('active');
+            //var active = $( ".selector" ).tabs( "option", "active" );
+            var current_tab = $(this).attr('href');
+            switch (current_tab){
+                case "#tab-1":
+                    $('.order_name').text("Купить Тур 1");
+                    break;
+                case "#tab-2":
+                    $('.order_name').text("Купить Тур 2");
+                    break;
+                case "#tab-3":
+                    $('.order_name').text("Купить Тур 3");
+                    break;
+            }
+
+
+            return false;
+
+        }).filter(':first').click()
+
+    });
+</script>
+
+
+
+<p><a href= "../index.php">Назад</a></p>
+</body>
+</html>
