@@ -95,7 +95,9 @@
         <div class="tabs-item" id="tab-3">
             <strong>Текст вкладки №3</strong>
         </div>
+        <button id="buy" class="buy">Купить</button>
     </div>
+
 </div>
 <div class="order">
     <div class="order_name">Купить</div>
@@ -113,11 +115,85 @@
     </select>
         <br><label  for="city">Аэропорт: </label >
         <input type="text" name="air" class="form-control" id="air">
-        <br><label  for="city">Промокод: </label >
+        <br><label  for="promo">Промокод: </label >
         <input type="text" name="promo" class="form-control" id="promo"><a onclick="event.preventDefault()"href=”#” title=SALE15 >?</a>
-</div>
+        <br><label  for="price">Итого: </label >
+        <input type="text" name="air" class="form-control" id="price" readonly>
+        <br><button id="done" class="done">Оформить</button>
 
+</div>
+<div class="ready" title="Заказ оформлен">
+    Спасибо
+</div>
+<div class="accept" title="Оформить тур?">
+    Совершая заказ Вы подтверждаете
+    согласие с условиями нашего договора-оферты
+    <br><button id="yes" class="yes">ДА</button>
+    <button id="no" class="no">НЕТ</button>
+</div>
 <script>
+    var day_price=10000;
+    var promo = 1;
+    $('.accept').dialog({
+        autoOpen: false,
+        width: 350
+    });
+    $('.ready').dialog({
+        autoOpen: false,
+        width: 350
+    });
+    $('#yes').click(function(){
+        $('.accept').dialog('close');
+        $('.order').dialog('close');
+        $('.ready').dialog('open');
+    });
+    $('#no').click(function(){
+        $('.accept').dialog('close');
+    });
+    $('#done').click(function(){
+
+        if ($('.fio_input').val().length<3){
+            $('.fio_input').css({'border-color':'#d8512d'});
+        }
+        else if ($('#date').val().length==0){
+            $('#date').css({'border-color':'#d8512d'});
+        }
+        else {
+            $('#date').css({'border-color':'#000000'});
+            $('.accept').dialog('open');
+        }
+
+    });
+    $("#name").change(function(){
+        if ($(this).val().length<3){
+            $(this).css({'border-color':'#d8512d'});
+        }
+        else {
+            $(this).css({'border-color':'#000000'});
+        }
+        $('#price').val($('#start').val()*day_price*promo);
+
+
+    });
+    $("#promo").change(function(){
+        if ($(this).val()=="SALE15"){
+            promo = 0.85
+            $('#price').val($('#start').val()*day_price*promo);
+        }
+        else {
+            promo = 1;
+            $('#price').val($('#start').val()*day_price*promo);
+        }
+
+    });
+    $('.order').dialog({
+        autoOpen: false,
+        width: 700
+    });
+    $('#buy').click(function(){
+        $('.order').dialog('open');
+
+    });
     $("order a").tooltip();
     $( function() {
         var tags;
@@ -165,9 +241,11 @@
             step: 1,
             slide: function (event, ui) {
                $('#start').val(ui['value']);
+               $('#price').val($('#start').val()*day_price*promo);
             }
         });
         $('#start').val($('#slider').slider('values',0));
+        $('#price').val($('#start').val()*day_price*promo);
     });
     $(function() {
         var tab = $('#tabs .tabs-items > div');
@@ -185,12 +263,15 @@
             switch (current_tab){
                 case "#tab-1":
                     $('.order_name').text("Купить Тур 1");
+                    day_price=10000;
                     break;
                 case "#tab-2":
                     $('.order_name').text("Купить Тур 2");
+                    day_price=15000;
                     break;
                 case "#tab-3":
                     $('.order_name').text("Купить Тур 3");
+                    day_price=20000;
                     break;
             }
 
