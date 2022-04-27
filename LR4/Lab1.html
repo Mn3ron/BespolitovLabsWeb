@@ -9,7 +9,10 @@
 </head>
 <body>
 <style >
-
+    body {
+        background-color: #000;
+        color: #fff;
+    }
     #tabs {
         margin: 10px 0;
     }
@@ -27,21 +30,21 @@
     .tabs-nav a {
         display: block;
         padding: 10px 20px;
-        border-top: 1px solid #ccc;
-        border-bottom: 1px solid #ccc;
-        border-left: 1px solid #ccc;
-        background: #fbfbfb;
+        border-top: 1px solid #fff;
+        border-bottom: 1px solid #fff;
+        border-left: 1px solid #fff;
+        background: #000;
         font-size: 16px;
         text-decoration: none;
         text-align: center;
-        color: #999;
+        color: #fff;
     }
     .tabs-nav li:first-child a {
         border-radius: 5px 0 0 0;
     }
     .tabs-nav li:last-child a {
         display: block;
-        border-right: 1px solid #ccc;
+        border-right: 1px solid #fff;
         border-radius: 0 5px 0 0;
     }
     .tabs-nav a.active {
@@ -52,9 +55,10 @@
     .tabs-items {
         border: 1px solid #ccc;
         border-radius: 0 5px 5px 5px;
-        background: #fff;
+        background: #000;
         margin: -1px 0 0 0;
         width: 700px;
+        color: #fff;
     }
     .tabs-item {
         padding: 15px;
@@ -79,21 +83,26 @@
 <div id="tabs">
 
     <ul class="tabs-nav">
-        <li><a href="#tab-1">Тур 1</a></li>
-        <li><a href="#tab-2">Тур 2</a></li>
-        <li><a href="#tab-3">Тур 3</a></li>
+        <li><a href="#tab-1">Тур Турция</a></li>
+        <li><a href="#tab-2">Тур Греция</a></li>
+        <li><a href="#tab-3">Тур Мальдивы</a></li>
     </ul>
 
 
     <div class="tabs-items">
         <div class="tabs-item" id="tab-1">
-            <strong>Текст вкладки №1</strong>
+            <img src="turkey.jpg">
+            <p>Hotel My Dream — отель категории «четыре звезды», оформленный в ярких тонах. Море находится совсем рядом с отелем — дойти туда вы сможете всего за несколько минут. Вход в воду — песок. Обратите внимание: своего пляжа у отеля нет, занимать лежаки на чужих нельзя. Так что нужно будет заплатить или устраиваться на полотенце. В отеле работают wellness-центр и хаммам. Вы можете отправиться туда, если хотите расслабиться. Ичмелер также находится неподалеку от отеля — до центра можно доехать на автобусе примерно за пятнадцать минут. Туры в Hotel My Dream подойдут для отдыха молодежи.</p>
         </div>
         <div class="tabs-item" id="tab-2">
-            <strong>Текст вкладки №2</strong>
+            <img src="greece.jpg">
+            <p>Четырехзвездочный отель Malia Holidays обосновался в центре курортного города Малья, на удалении от моря. Чтобы добраться до пляжа, придется совершить 5-минутную прогулку. Отельная территория включает в себя уютный жилой комплекс, обширный открытый бассейн и террасу для принятия солнечных ванн. К услугам постояльцев снек-бар и бар у бассейна. Кондиционером и сейфом можно воспользоваться за дополнительную плату. Отель предоставляет сервис, который придется по душе любителям домашних животных — сюда можно заселяться со своими питомцами: кошками и небольшими собаками. Отель Malia Holidays подходит для спокойного экономного отдыха</p>
         </div>
         <div class="tabs-item" id="tab-3">
-            <strong>Текст вкладки №3</strong>
+            <img src="maldiv.jpg">
+            <p>Четырехзвездочный гостиничный комплекс Rahaa Resort расположен на острове Кудафарес, который входит в Мальдивский архипелаг. Симпатичные виллы находятся на берегу соленого озера. До песчаного пляжа можно дойти за 1 минуту. Туры в отель Rahaa Resort заинтересуют поклонников спокойного пляжного отдыха и водных видов спорта.
+                На приотельной территории устроен пальмовый сад. Приветливый персонал предлагает гостям бесплатный снорклинг.
+                Элегантные 2-3-местные виллы имеют площадь 75-77 кв. м. Светлые комнаты оформлены в бело-голубых тонах, пол деревянный. В каждом номере имеется личная ванная комната под открытым небом и терраса со стульями. В распоряжении туристов кондиционер, кофеварка и сейф. Гости положительно оценивают дружелюбный персонал и красивые виды.</p>
         </div>
         <button id="buy" class="buy">Купить</button>
     </div>
@@ -113,6 +122,18 @@
         <option value="s2">Санкт-Петербург</option>
         <option value="s3">Уфа</option>
     </select>
+    <div class="accordion">
+        <h3>Аэропорты Москвы:</h3>
+        <div>Внуково,
+            Домодедово,
+            Шереметьево</div>
+
+        <h3>Аэропорты Санкт-Петербурга:</h3>
+        <div>Пулково</div>
+
+        <h3>Аэропорты Уфы:</h3>
+        <div>Международный аэропорт Уфа</div>
+    </div>
         <br><label  for="city">Аэропорт: </label >
         <input type="text" name="air" class="form-control" id="air">
         <br><label  for="promo">Промокод: </label >
@@ -134,6 +155,10 @@
 <script>
     var day_price=10000;
     var promo = 1;
+    $('.accordion').accordion({
+        heightStyle: 'content',
+        active: true
+    });
     $('.accept').dialog({
         autoOpen: false,
         width: 350
@@ -188,7 +213,9 @@
     });
     $('.order').dialog({
         autoOpen: false,
-        width: 700
+        width: 700,
+        show: {effect: "clip", duration:800},
+        hide: {effect: "drop", duration:800}
     });
     $('#buy').click(function(){
         $('.order').dialog('open');
@@ -262,15 +289,15 @@
             var current_tab = $(this).attr('href');
             switch (current_tab){
                 case "#tab-1":
-                    $('.order_name').text("Купить Тур 1");
+                    $('.order_name').text("Купить Тур Турция");
                     day_price=10000;
                     break;
                 case "#tab-2":
-                    $('.order_name').text("Купить Тур 2");
+                    $('.order_name').text("Купить Тур Греция");
                     day_price=15000;
                     break;
                 case "#tab-3":
-                    $('.order_name').text("Купить Тур 3");
+                    $('.order_name').text("Купить Тур Мальдивы");
                     day_price=20000;
                     break;
             }
