@@ -83,21 +83,29 @@
 <script>
     n = 5;
     $(".add").click(function(){
+        for (i=0;i<5;i++) {
+            $.get("getdata_3.php",
+                {"kol": 5, "tek": n},
+                function (data) {
+                    var result = JSON.parse(data);
+                    if (n == 20) {
+                        $(".add").hide();
+                    }
+                    //alert(data)
 
-        $.get( "getdata_3.php",
-            {"kol": 5, "tek":n},
-            function( data ) {
-                var result = JSON.parse(data);
-                if(n==15) {$(".add").hide();}
-                add(result);
-                n+=5;
-            }
-        );
+                    add(result);
+
+
+
+                }
+            );
+            n++;
+        }
     });
 function add(result) {
-    for (i=0;i<5;i++){
-        $(".add").before('<div class ="new" ><img style="padding-right: 4px;"align="left" id="3050" src="'+ result[i*2] +'" >'+result[i*2+1]+'</div><br>');
-    }
+    //for (i=0;i<5;i++){
+        $(".add").before('<div class ="new" ><img style="padding-right: 4px;"align="left" id="3050" src="'+ result[0] +'" >'+result[1]+'</div><br>');
+    //}
 
 }
 </script>

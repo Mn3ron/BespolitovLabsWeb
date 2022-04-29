@@ -21,13 +21,14 @@ $array = array("titan.jpg", "TITAN RTX™ предназначена для ис
 
 
     );
-if ($tek == 5) {echo json_encode($array, JSON_UNESCAPED_UNICODE);}
+$array = array_splice($array,($tek-5)*2,2);
+/*if ($tek == 5) {echo json_encode($array, JSON_UNESCAPED_UNICODE);}
 else if ($tek == 15){$array = array_slice($array, 20);
     echo json_encode($array, JSON_UNESCAPED_UNICODE);
 }
 else {
     $array = array_slice($array, $tek);
     echo json_encode($array, JSON_UNESCAPED_UNICODE);
-}
-
+}*/
+echo json_encode($array, JSON_UNESCAPED_UNICODE);
 ?>
