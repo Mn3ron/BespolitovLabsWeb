@@ -53,7 +53,7 @@
     </ol>
 	<li>Лаба 5</li>
     <ol>
-
+        <li><a href= "LR5/Lab1.html" >Задание 1</a> </li>
     </ol>
 </ol>
 
