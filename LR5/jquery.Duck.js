@@ -1,5 +1,6 @@
 (function( $ ) {
     var side;
+    var ducks=0;
     function startPoint(max) {
         return Math.floor(Math.random() * max);
     }
@@ -47,6 +48,7 @@
                     createDuck();
                     $(".duck").css('left','0px');
                     $(".back").fly();
+                    ducks++;
                 });
                 break;
             case 1:
@@ -55,7 +57,7 @@
                     createDuck();
                     $(".duck").css('left','0px');
                     $(".back").fly();
-
+                    ducks++;
                 });
                 break;
         }
@@ -71,7 +73,7 @@
         if ($("#time").val()<10){$("#time").val(10)}
         setTimeout(timeOver, $("#time").val()*1000);
         function timeOver() {
-           alert('Ваш счет: '+score);
+           alert('Ваш счет: '+score + ' Всего птиц: ' + ducks);
            location.reload();
 
 
