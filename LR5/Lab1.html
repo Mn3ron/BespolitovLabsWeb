@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Бесполитов Д.А.</title>
+    <script  src = "../jquery.js"></script>
+    <script  src = "../jquery-ui.js"></script>
+    <script src="jquery.Duck.js"></script>
+    <link rel="stylesheet"  href="../jquery-ui.css">
+</head>
+<body>
+<style >
+    .startWindow {
+        display: table-cell;
+        height: 170px;
+        width: 400px;
+        /*vertical-align: middle;*/
+        text-align: left;
+        border: 1px solid black;
+        box-shadow: 7px 7px 5px rgba(0,0,0,0.6);
+        background-color: white;
+    }
+    .play{
+        position:absolute;
+        top:200px;
+        left:100px;
+        height:50px;
+        width:200px;
+    }
+    .back {
+        /*display: table-cell;*/
+        height: 720px;
+        width: 1280px;
+        /*vertical-align: middle;*/
+        text-align: left;
+        border: 1px solid black;
+        /*box-shadow: 7px 7px 5px rgba(0,0,0,0.6);*/
+        background-color: white;
+        position:absolute;
+        top:300px;
+        left:100px;
+        display:none;
+        cursor: url('aim.png'),auto;
+    }
+    .duck {
+        position:absolute;
+    }
+
+</style>
+<p>ЛР5</p>
+<p>Задание 1</p>
+<div class ="startWindow">
+    <div id="score">Счет: </div>
+    <div>Время игры (сек.): <input type="number" min="10" value="10" id="time" required></div>
+    <div>Сложность:
+    <select id="difficulty">
+        <option value="easy">Легкая</option>
+        <option value="hard">Сложная</option>
+    </select></div>
+    <button id="play" class="play" >Начать игру</button>
+</div>
+
+<div class ="back">
+    <div class="duck"></div>
+</div>
+<script>
+
+    $(".play").click(function(){
+
+        if (!$(this).hasClass('clicked')) {
+            $(this).addClass('clicked');
+            $(".back").toggle();
+            $(".back").start();
+            $(".back").game();
+            $(".play").remove();
+
+        } else {
+            $(this).removeClass('clicked');
+            $(".back").toggle();
+            $(".back").end();
+        }
+
+
+
+    });
+</script>
+
+
+
+<p><a href= "../index.php">Назад</a></p>
+</body>
+</html>
